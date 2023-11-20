@@ -1,0 +1,40 @@
+[
+  {
+    "id": "111",
+    "name": "S.Sidorov",
+    "hide": true,
+    "thumbnail": false,
+    "gender": "m",
+    "first_name": "Сидр",
+    "last_name": "Сидоров",
+    "middle_name": "Сидорович",
+    "birthday": "1203",
+    "email": "S.Sidorov@ya.ru",
+    "cn": "Сидоров Сидр Сидорович",
+    "telephone": "0000",
+    "mobile": "9000000000",
+    "title": "Служба персонала",
+    "department": "Служба персонала",
+    "company": "Копыта ОАО",
+    "city": "Москва"
+  },
+  {
+    "id": "222",
+    "name": "I.Andreeva",
+    "hide": true,
+    "thumbnail": false,
+    "gender": "f",
+    "first_name": "Инга",
+    "last_name": "Андреева",
+    "middle_name": "Ильинична",
+    "birthday": "0101",
+    "email": "I.Andreeva@ya.ru",
+    "cn": "Андреева Инга Ильинична",
+    "telephone": "1111",
+    "mobile": "9111111111",
+    "title": "Бухгалтер",
+    "department": "Служба персонала",
+    "company": "Рога и копыта ООО",
+    "city": "Москва"
+  }
+]
