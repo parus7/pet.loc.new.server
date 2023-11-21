@@ -5,7 +5,7 @@ const getData = (dbName) => {
  }
 
 const saveToDatabase = (dbName, DB) => {
-  fs.writeFile(dbName, JSON.stringify(DB, null, 2), {
+  fs.writeFileSync(dbName, JSON.stringify(DB, null, 2), {
     encoding: "utf-8",
   });
 } ;

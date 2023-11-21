@@ -10,7 +10,7 @@ const getAll = (nameDb) => {
       // return path2db + "Empl.json";
       break;
     case "Arch":
-      // return getData(path2db + "Arch.json");
+      return getData(path2db + "Arch.json");
       // return getData(path2db + "Arch.json");
       break;
     default:
@@ -22,11 +22,11 @@ const postAll = (nameDb, DB) => {
   switch (nameDb) {
     case "Empl":
       saveToDatabase((path2db + "Empl.json"), DB);
-      return nameDb;
+      return "data save";
       break;
     case "Arch":
       saveToDatabase((path2db + "Arch.json"), DB);
-      return Arch;
+      return "Arch save";
       break;
     default:
       console.log("Ошибка! Нет такой базы данных");
