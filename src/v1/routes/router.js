@@ -12,6 +12,10 @@ router.get("/arch", emplController.getAllArch);
 
 router.post("/arch", emplController.postAllArch);
 
+router.post("/asset", emplController.postAssert);
+
+router.delete("/asset", emplController.deleteAssert);
+
 router.post("/login", logController);
 
 module.exports = router;
