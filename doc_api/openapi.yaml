@@ -55,7 +55,61 @@ paths:
           description: Access token does not have the required scope
         default:
           description: 401 Not authenticated
-          
+  /v1/arch:
+    get:
+      summary: get arch list cards
+      description: get arch cards
+      operationId: get_arch_list
+      security:
+        - BearerAuth: [user1]
+      parameters:
+        - in: header
+          name: authentication
+          description: JWT authentication
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+        '401':
+          description: Not authenticated
+        '403':
+          description: Access token does not have the required scope
+        default:
+          description: 401 Not authenticated 
+    post:
+      summary: post arch list cards
+      description: save arch cards
+      operationId: post_arch_list
+      security:
+        - BearerAuth: [user1]
+      parameters:
+        - in: header
+          name: authentication
+          description: JWT authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Not authenticated
+        '403':
+          description: Access token does not have the required scope
+        default:
+          description: 401 Not authenticated      
 #  /api/v1/item:
 #    summary: update card
 #    description: update card
