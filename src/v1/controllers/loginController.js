@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const crypto = require("node:crypto");
-const users = require("./users");
+const users = require("./editors");
 const path = require("node:path");
 const cors = require('cors');
 const config = require('./../config.json')
@@ -9,7 +9,7 @@ const config = require('./../config.json')
 const host = config.host;
 const port = config.port;
 
-const tokenKey = config.tokenKey;
+const tokenKey = process.env.tokenKey || config.tokenKey;
 
 const corsOptions = {
   // origin: 'http://127.0.0.1:8080'
