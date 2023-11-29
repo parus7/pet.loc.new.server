@@ -1,0 +1,283 @@
+openapi: 3.0.3
+info:
+  title: telephone books
+  version: 1.0.0
+  description: client server app for many people
+  license:
+    name: MIT
+
+servers:
+  - url: https://saa.44321.ru/
+    variables: {}
+    description: Optional server description, e.g. Internal staging server for testing
+    
+
+paths:
+  /v1/:
+    get:
+      summary: get list cards
+      description: get all cards
+      operationId: get_list
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+        default:
+          description: Default error sample response
+    post:
+      summary: post list cards
+      description: save list cards
+      operationId: post_list
+      security:
+        - BearerAuth: [user1]
+      parameters:
+        - in: header
+          name: authentication
+          description: JWT authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Not authenticated
+        '403':
+          description: Access token does not have the required scope
+        default:
+          description: 401 Not authenticated
+  /v1/arch:
+    get:
+      summary: get arch list cards
+      description: get arch cards
+      operationId: get_arch_list
+      security:
+        - BearerAuth: [user1]
+      parameters:
+        - in: header
+          name: authentication
+          description: JWT authentication
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+        '401':
+          description: Not authenticated
+        '403':
+          description: Access token does not have the required scope
+        default:
+          description: 401 Not authenticated 
+    post:
+      summary: post arch list cards
+      description: save arch cards
+      operationId: post_arch_list
+      security:
+        - BearerAuth: [user1]
+      parameters:
+        - in: header
+          name: authentication
+          description: JWT authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Users'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Not authenticated
+        '403':
+          description: Access token does not have the required scope
+        default:
+          description: 401 Not authenticated      
+#  /api/v1/item:
+#    summary: update card
+#    description: update card
+#    post:
+#      summary: update card
+#      description: update card object on id
+#      operationId: update_card
+#      responses:
+#        '401':
+#          description: OK
+#        default:
+#          description: Default error sample response
+  /api/v1/assets:
+    summary: post files to assets
+    description: for photo etc.
+    post:
+      summary: Uploads a file.
+      description: ''
+      operationId: ''
+      security:
+        - BearerAuth: [user1]
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                profileImage:
+                  # default Content-Type for string/binary is `application/octet-stream`
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Not authenticated
+        '403':
+          description: Access token does not have the required scope
+        default:
+          description: 401 Not authenticated
+    delete:
+      summary: delete file from assets
+      description: ''
+      operationId: ''
+      security:
+        - BearerAuth: [user1]
+      parameters:
+        - in: header
+          name: authentication
+          description: JWT authentication
+          required: true
+          schema:
+            type: string
+      responses:
+        '202':
+          description: The resource was deleted successfully.
+        '204':
+          description: No Content
+        default:
+          description: 401 Not authenticated
+  /v1/login:
+    summary: get JWT
+    post:
+      summary: ''
+      description: post send name password, load json object with JWT
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                'name':
+                  type: string
+                  example: "user1"
+                'password':
+                  type: string
+                  example: "securePassword"
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                # $ref: '#/components/schemas/Users'
+                type: object
+                properties:
+                  'name':
+                    type: string
+                    example: "user1"
+                  'password':
+                    type: string
+                    example: "securePassword"
+                  "token": 
+                    type: string
+                    example: "2yJhbGciOiJIUzI1NiIsInR5cCI6Imp3dCJ9.eyJpZCI6MiwibG9naW4iOiJ1c2VyMiIsInBhc3N3b3JkIjoicGFzc3dvcmQyIn0=.HcZY9HMhXQXEN9XabQcYn8W3TYkg6/oH6AAQqz9hWno="
+                
+        default:
+          description: '"message": "User not found!"'
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+  schemas:
+    Users:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 4
+        'name':
+          type: string
+          example: "D.Orleanskaya" 
+        'hide':
+          type: boolean
+          example: false
+        'thumbnail':
+          type: boolean
+          example: true
+        "gender":
+          type: string
+          example: 'f'
+        "first_name":
+          type: string
+          example: "Дива"
+        "last_name":
+          type: string
+          example: "Орлеанская"
+        "middle_name":
+          type: string
+          example: "Вахтанговна"
+        "birthday":
+          type: string
+          example: "2806"
+        "email":
+          type: string
+          example: "D.Orleanskaya@ya.ru"
+        "cn":
+          type: string
+          example: "Орлеанская Дива Вахтанговна"
+        "telephone":
+          type: string
+          example: "1700"
+        "mobile":
+          type: string
+          example: "9164753777"
+        "title":
+          type: string
+          example: "Финансовый менеджер"
+        "department":
+          type: string
+          example: "Отдел финансового планирования и анализа"
+        "company":
+          type: string
+          example: "Рога и копыта ООО"
+        "city":
+          type: string
+          example: "Москва"
+        "colorMark":
+          type: string
+          example: "white"
+        "hashtag":
+          type: string
+          example: ""      
