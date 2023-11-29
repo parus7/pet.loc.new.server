@@ -1,5 +1,7 @@
 // const express = require('express');
-const queryDb = require("./../../../database/queresDb");
+const queryDb = require("./../../../lib/queresDb");
+const imgUtils = require("./../../../lib/utils");
+const fs = require("fs");
 
 const getAllEmployees = (req, res) => {
   // console.log(queryDb.getAll('Empl'))
@@ -14,8 +16,8 @@ const postAllEmployees = (req, res) => {
     // res.status(200).json({ message: "Data saved." })
     
   } else {
-    console.log("Not authorized!")
-    res.status(401).json({ message: "Not authorized! Data not save!" })
+    console.log("Not authorized!");
+    res.status(401).json({ message: "Not authorized! Data not save!" });
   }
 }
 
@@ -33,6 +35,24 @@ const postAllArch = (req, res) => {
     res.status(401).json({ message: "Not authorized! Data not save!" })
   }
 }
-module.exports = { getAllEmployees, postAllEmployees, getAllArch, postAllArch };
+
+const postAssert = (req, res) => {
+  // binary data !!!
+  //  verife type data  jpg jpeg, png, svg,
+  //  verife size data   > 75kb
+  //    if (req.user) {
+  //   res.send({ status: "Ok", data: imgUtils.saveImg(req.body) });
+  // } else {
+  //   console.log("Not authorized!")
+  //   res.status(401).json({ message: "Not authorized! Data not save!" })
+  // }
+  res.send({ status: "Ok", data: "Data save" });
+}
+const deleteAssert = (req, res) => {
+  res.send({ status: "Ok", data: "Data delete" });
+}
+
+
+module.exports = { getAllEmployees, postAllEmployees, getAllArch, postAllArch, postAssert, deleteAssert };
 
 // need verify income data
