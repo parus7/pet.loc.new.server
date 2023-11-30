@@ -178,8 +178,8 @@
         }
       }
     },
-    "/api/v1/assets": {
-      "summary": "post files to assets",
+    "/v1/assets": {
+      "summary": "post ProfileImage",
       "description": "for photo etc.",
       "post": {
         "summary": "Uploads a file.",
