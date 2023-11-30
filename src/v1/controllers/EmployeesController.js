@@ -36,7 +36,7 @@ const postAllArch = (req, res) => {
   }
 }
 
-const postAssert = (req, res) => {
+const postAsset = (req, res) => {
   // binary data !!!
   //  verife type data  jpg jpeg, png, svg,
   //  verife size data   > 75kb
@@ -46,13 +46,15 @@ const postAssert = (req, res) => {
   //   console.log("Not authorized!")
   //   res.status(401).json({ message: "Not authorized! Data not save!" })
   // }
-  res.send({ status: "Ok", data: "Data save" });
+  // res.send({ status: "Ok", data: "Data save" });
+  imgUtils.saveImg(req, res)
 }
-const deleteAssert = (req, res) => {
+const deleteAsset = (req, res) => {
+  console.log(' I WORK!!!!')
   res.send({ status: "Ok", data: "Data delete" });
 }
 
 
-module.exports = { getAllEmployees, postAllEmployees, getAllArch, postAllArch, postAssert, deleteAssert };
+module.exports = { getAllEmployees, postAllEmployees, getAllArch, postAllArch, postAsset, deleteAsset };
 
 // need verify income data
