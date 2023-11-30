@@ -12,9 +12,9 @@ router.get("/arch", emplController.getAllArch);
 
 router.post("/arch", emplController.postAllArch);
 
-router.post("/asset", emplController.postAssert);
+router.post("/asset", emplController.postAsset);
 
-router.delete("/asset", emplController.deleteAssert);
+router.delete("/asset/{fileName}", emplController.deleteAsset);
 
 router.post("/login", logController);
 
