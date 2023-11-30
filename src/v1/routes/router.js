@@ -14,7 +14,7 @@ router.post("/arch", emplController.postAllArch);
 
 router.post("/asset", emplController.postAsset);
 
-router.delete("/asset/{fileName}", emplController.deleteAsset);
+router.delete("/asset/:fileName", emplController.deleteAsset);
 
 router.post("/login", logController);
 

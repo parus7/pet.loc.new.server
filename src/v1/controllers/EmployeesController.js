@@ -50,8 +50,10 @@ const postAsset = (req, res) => {
   imgUtils.saveImg(req, res)
 }
 const deleteAsset = (req, res) => {
-  console.log(' I WORK!!!!')
-  res.send({ status: "Ok", data: "Data delete" });
+  // console.log((req.params.fileName))
+  const result = imgUtils.delImg(req.params.fileName)
+  // console.log(result)
+  res.send({ status: 202, data: result });
 }
 
 
