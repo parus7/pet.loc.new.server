@@ -5,12 +5,12 @@ const fs = require("fs");
 
 const getAllEmployees = (req, res) => {
   // console.log(queryDb.getAll('Empl'))
-  res.send({status: "Ok", data: queryDb.getAll('Empl')});
+  res.json(queryDb.getAll('Empl'));
 };
 
 const postAllEmployees = (req, res) => {
   if (req.user) { 
-  res.send({status: 200, data: queryDb.postAll('Empl', req.body)});
+  res.send({data: queryDb.postAll('Empl', req.body)});
   // queryDb.postAll("Empl", req.body);
     // res.send({ status: 200, data: req.user });
     // res.status(200).json({ message: "Data saved." })

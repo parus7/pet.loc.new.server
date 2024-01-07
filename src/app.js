@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const path = require('node:path')
+const cors = require('cors')
 const v1Router = require("./v1/routes/router");
 const config = require('./v1/config.json');
 const crypto = require("node:crypto");
@@ -8,6 +8,8 @@ const PORT = process.env.PORT || config.port;
 const tokenKey = process.env.tokenKey || config.tokenKey;
 const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('./../assets/doc_api/doc_api.json')
+
+app.use(cors())
 
 app.listen(PORT, () => {
   console.log(`App listen on port ${PORT}`);
